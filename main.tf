@@ -342,9 +342,9 @@ module "aws_network_firewall" {
   network_firewall_name                     = var.central_vpcs.inspection.aws_network_firewall.name
   network_firewall_description              = var.central_vpcs.inspection.aws_network_firewall.description
   network_firewall_policy                   = var.central_vpcs.inspection.aws_network_firewall.policy_arn
-  network_firewall_policy_change_protection = try(var.central_vpcs.inspection.aws_network_firewall.network_firewall_policy_change_protection, false)
-  network_firewall_subnet_change_protection = try(var.central_vpcs.inspection.aws_network_firewall.network_firewall_subnet_change_protection, false)
-  network_firewall_encryption_key_arn       = try(var.central_vpcs.inspection.aws_network_firewall.network_firewall_encryption_key_arn, null)
+  network_firewall_policy_change_protection = try(var.central_vpcs.inspection.aws_network_firewall.policy_change_protection, false)
+  network_firewall_subnet_change_protection = try(var.central_vpcs.inspection.aws_network_firewall.subnet_change_protection, false)
+  network_firewall_encryption_key_arn       = try(var.central_vpcs.inspection.aws_network_firewall.encryption_key_arn, null)
 
   vpc_id                = module.central_vpcs["inspection"].vpc_attributes.id
   vpc_subnets           = { for k, v in module.central_vpcs["inspection"].private_subnet_attributes_by_az : split("/", k)[1] => v.id if split("/", k)[0] == "endpoints" }
