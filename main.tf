@@ -337,7 +337,7 @@ resource "aws_ec2_transit_gateway_route_table_propagation" "hybrid_dns_to_spokes
 module "aws_network_firewall" {
   count = local.create_anfw ? 1 : 0
 
-  source = "git::https://github.com/stigian/terraform-aws-networkfirewall.git?ref=cnap"
+  source = "git::https://github.com/stigian/terraform-aws-networkfirewall.git?ref=dev"
 
   network_firewall_name                     = var.central_vpcs.inspection.aws_network_firewall.name
   network_firewall_description              = var.central_vpcs.inspection.aws_network_firewall.description
