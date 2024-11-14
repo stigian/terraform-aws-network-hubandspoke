@@ -3,13 +3,6 @@
 
 # --- root/variables.tf ---
 
-# AWS REGION
-variable "aws_region" {
-  description = "AWS region."
-  type        = string
-  default     = "us-gov-west-1"
-}
-
 # MODULE IDENTIFIER
 variable "identifier" {
   type        = string
