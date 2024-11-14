@@ -134,13 +134,15 @@ EOF
 
   # Valid keys for var.central_vpcs.inspection.aws_network_firewall
   validation {
-    error_message = "Only valid key values for var.central_vpcs.inspection.aws_network_firewall: \"name\", \"description\", \"policy_arn\", \"policy_change_protection\", \"subnet_change_protection\", \"tags\"."
+    error_message = "Only valid key values for var.central_vpcs.inspection.aws_network_firewall: \"name\", \"description\", \"policy_arn\", \"encryption_key_arn\", \"logging_configuration\", \"policy_change_protection\", \"subnet_change_protection\", \"tags\"."
     condition = length(setsubtract(keys(try(var.central_vpcs.inspection.aws_network_firewall, {})), [
       "name",
       "description",
       "policy_arn",
       "policy_change_protection",
       "subnet_change_protection",
+      "encryption_key_arn",
+      "logging_configuration",
       "tags"
     ])) == 0
   }
