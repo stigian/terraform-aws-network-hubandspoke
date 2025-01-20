@@ -349,7 +349,7 @@ module "aws_network_firewall" {
   vpc_subnets           = { for k, v in module.central_vpcs["inspection"].private_subnet_attributes_by_az : split("/", k)[1] => v.id if split("/", k)[0] == "endpoints" }
   number_azs            = var.central_vpcs.inspection.az_count
   routing_configuration = local.anfw_routing_configuration[local.inspection_configuration]
-  logging_configuration = try(var.central_vpcs.inspection.logging_configuration, {})
+  logging_configuration = try(var.central_vpcs.inspection.aws_network_firewall.logging_configuration, {})
 
   tags = merge(
     module.tags.tags_aws,
