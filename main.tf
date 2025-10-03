@@ -30,7 +30,7 @@ resource "aws_ec2_transit_gateway" "tgw" {
 module "central_vpcs" {
   for_each = var.central_vpcs
 
-  source = "git::https://github.com/stigian/terraform-aws-vpc.git?ref=dev"
+  source = "git::https://github.com/stigian/terraform-aws-vpc.git?ref=8adf507bbddb5d959fc63cb894f40afc9d9f4405" # v4.4.3
 
   name               = try(each.value.name, each.key)
   vpc_id             = try(each.value.vpc_id, null)
